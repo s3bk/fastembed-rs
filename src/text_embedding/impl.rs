@@ -266,7 +266,7 @@ impl TextEmbedding {
     /// embeddings with your custom output type.
     pub fn transform<'e, 'r, 's, S: AsRef<str> + Send + Sync>(
         &'e self,
-        texts: Vec<S>,
+        texts: &[S],
         batch_size: Option<usize>,
     ) -> Result<EmbeddingOutput<'r, 's>>
     where
@@ -377,7 +377,7 @@ impl TextEmbedding {
     /// the default output precedence and array transformer for the [`TextEmbedding`] model.
     pub fn embed<S: AsRef<str> + Send + Sync>(
         &self,
-        texts: Vec<S>,
+        texts: &[S],
         batch_size: Option<usize>,
     ) -> Result<Vec<Embedding>> {
         let batches = self.transform(texts, batch_size)?;

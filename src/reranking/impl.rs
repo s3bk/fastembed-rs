@@ -125,7 +125,7 @@ impl TextRerank {
     /// Rerank documents using the reranker model and returns the results sorted by score in descending order.
     pub fn rerank<S: AsRef<str> + Send + Sync>(
         &self,
-        query: S,
+        query: impl AsRef<str>,
         documents: Vec<S>,
         return_documents: bool,
         batch_size: Option<usize>,
